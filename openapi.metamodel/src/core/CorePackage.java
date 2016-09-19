@@ -39,7 +39,7 @@ public interface CorePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://swagger.io/core";
+	String eNS_URI = "http://example.com/openAPI/core";
 
 	/**
 	 * The package namespace name.
@@ -47,7 +47,7 @@ public interface CorePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "swagger";
+	String eNS_PREFIX = "openAPI.core";
 
 	/**
 	 * The singleton instance of the package.
