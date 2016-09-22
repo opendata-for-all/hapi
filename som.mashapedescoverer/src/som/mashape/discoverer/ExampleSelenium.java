@@ -1,4 +1,4 @@
-package som.mashapedescoverer;
+package som.mashape.discoverer;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

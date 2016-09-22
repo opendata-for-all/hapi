@@ -1,4 +1,4 @@
-package som.mashapedescoverer;
+package som.mashape.discoverer;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -30,10 +30,10 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import core.Api;
 import core.CoreFactory;
 import core.CorePackage;
-import som.mashapedescoverer.model.APIRequest;
-import som.mashapedescoverer.model.APIResrouces;
-import som.mashapedescoverer.utils.MashapeUtils;
-import som.mashapedescoverer.utils.ModelUtils;
+import som.mashape.discoverer.model.APIRequest;
+import som.mashape.discoverer.model.APIResrouces;
+import som.mashape.discoverer.utils.MashapeUtils;
+import som.mashape.discoverer.utils.ModelUtils;
 
 public class MashapeDiscoverer {
 	private WebDriver driver;

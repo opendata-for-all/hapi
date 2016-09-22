@@ -1,4 +1,4 @@
-package som.mashapedescoverer.model;
+package som.mashape.discoverer.model;
 
 public enum HttpMethod {
 

@@ -1,4 +1,4 @@
-package som.mashapedescoverer.utils;
+package som.mashape.discoverer.utils;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import com.google.gson.JsonObject;
 
 import core.Api;
-import som.mashapedescoverer.model.APIResrouces;
+import som.mashape.discoverer.model.APIResrouces;
 
 public class ModelUtils {
 //	public static void saveModel(Api api, String modelName, String location) throws FileNotFoundException {

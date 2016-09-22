@@ -1,4 +1,4 @@
-package som.mashapedescoverer;
+package som.mashape.discoverer;
 
 import java.io.StringReader;
 import java.net.MalformedURLException;
@@ -38,8 +38,8 @@ import jsondiscoverer.JsonAdvancedDiscoverer;
 import jsondiscoverer.JsonSimpleDiscoverer;
 import jsondiscoverer.JsonSource;
 import jsondiscoverer.JsonSourceSet;
-import som.mashapedescoverer.model.APIRequest;
-import som.mashapedescoverer.model.Parameter;
+import som.mashape.discoverer.model.APIRequest;
+import som.mashape.discoverer.model.Parameter;
 
 public class Discoverer {
 	CoreFactory factory;
@@ -292,7 +292,7 @@ public class Discoverer {
 
 	}
 
-	private ParameterLocation transformParameter(som.mashapedescoverer.model.ParameterLocation parameterLocation) {
+	private ParameterLocation transformParameter(som.mashape.discoverer.model.ParameterLocation parameterLocation) {
 		switch (parameterLocation) {
 		case PATH:
 			return ParameterLocation.PATH;

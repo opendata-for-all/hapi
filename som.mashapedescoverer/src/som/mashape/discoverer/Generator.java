@@ -1,4 +1,4 @@
-package som.mashapedescoverer;
+package som.mashape.discoverer;
 
 import java.util.Map.Entry;
 import java.util.Set;
@@ -17,7 +17,7 @@ import core.Path;
 import core.Response;
 import core.Schema;
 import core.SchemeType;
-import som.mashapedescoverer.model.APIResrouces;
+import som.mashape.discoverer.model.APIResrouces;
 
 public class Generator {
 	

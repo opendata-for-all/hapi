@@ -1,4 +1,4 @@
-package som.mashapedescoverer.utils;
+package som.mashape.discoverer.utils;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -10,11 +10,11 @@ import core.Api;
 import core.CoreFactory;
 import core.CorePackage;
 import core.Path;
-import som.mashapedescoverer.model.APIRequest;
-import som.mashapedescoverer.model.HttpMethod;
-import som.mashapedescoverer.model.Parameter;
-import som.mashapedescoverer.model.ParameterLocation;
-import som.mashapedescoverer.model.Response;
+import som.mashape.discoverer.model.APIRequest;
+import som.mashape.discoverer.model.HttpMethod;
+import som.mashape.discoverer.model.Parameter;
+import som.mashape.discoverer.model.ParameterLocation;
+import som.mashape.discoverer.model.Response;
 
 public class MashapeUtils {
 
