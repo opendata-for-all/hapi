@@ -22,7 +22,7 @@ public class CommonUtils {
 	public static void saveOpenAPIDefinition(String location, String swaggerSpec, String apiTitle) throws IOException{
 		
 		File file = new File(location+ File.separator + apiTitle + ".json");
-		FileWriter fileWritter = new FileWriter(file.getPath(), true);
+		FileWriter fileWritter = new FileWriter(file.getPath(),false);
 		BufferedWriter bufferWritter = new BufferedWriter(fileWritter);
 		bufferWritter.write(swaggerSpec.toString());
 		bufferWritter.close();
@@ -58,7 +58,7 @@ public class CommonUtils {
 	}
 	public static String convertYamlToJson(String yamlString) {
 	    Yaml yaml= new Yaml();
-	    System.out.println(yamlString);
+//	    System.out.println(yamlString);
 	    Map map= (Map) yaml.load(yamlString);
 
 	    JSONObject jsonObject=new JSONObject(map);
