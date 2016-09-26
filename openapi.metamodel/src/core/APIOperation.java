@@ -30,7 +30,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see core.CorePackage#getAPIOperation()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='oneBodyParameterAllowed hasUniqueParameters xorFormAndBody'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL oneBodyParameterAllowed='self.parameters-> select(e | e.\'_in\' = ParameterLocation::\'_body\') -> size() <= 1' oneFormDataParameterAllowed='self.parameters-> select(e | e.\'_in\' = ParameterLocation::\'_formData\') -> size() <= 1' hasUniqueParameters='self.parameters -> collect(t | Tuple{name : String = t.name,location : ParameterLocation = t._in})->asSet() -> size() = self.parameters -> size()' xorFormAndBody='(parameters-> select(e | e._\'in\' =  ParameterLocation::_\'body\') -> size()=1 and parameters-> select(e | e._\'in\' =  ParameterLocation::_\'formData\') -> size()=0)\r\n\tor \r\n\t(parameters-> select(e | e._\'in\' =  ParameterLocation::_\'body\') -> size()=0 and parameters-> select(e | e._\'in\' =  ParameterLocation::_\'formData\') -> size()=1)\r\n\tor \r\n\t(parameters-> select(e | e._\'in\' =  ParameterLocation::_\'body\') -> size()=0 and parameters-> select(e | e._\'in\' =  ParameterLocation::_\'formData\') -> size()=0)\r\n\t'"
  * @generated
  */
 public interface APIOperation extends EObject {
@@ -187,17 +188,19 @@ public interface APIOperation extends EObject {
 	EList<String> getProduces();
 
 	/**
-	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Parameters</b></em>' reference list.
 	 * The list contents are of type {@link core.APIParameter}.
+	 * It is bidirectional and its opposite is '{@link core.APIParameter#getOperations <em>Operations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parameters</em>' containment reference list.
+	 * @return the value of the '<em>Parameters</em>' reference list.
 	 * @see core.CorePackage#getAPIOperation_Parameters()
-	 * @model containment="true"
+	 * @see core.APIParameter#getOperations
+	 * @model opposite="operations"
 	 * @generated
 	 */
 	EList<APIParameter> getParameters();

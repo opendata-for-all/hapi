@@ -34,7 +34,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see core.CorePackage#getApi()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='requiredSwaggerVersion correctSwaggerVersion requiredInfoReference requiredPaths'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL requiredSwaggerVersion='not self.swagger.oclIsUndefined()' requiredInfoReference='not self.info.oclIsUndefined()' correctSwaggerVersion='self.swagger = \'2.0\'' requiredPaths='not self.paths.oclIsUndefined()'"
  * @generated
  */
 public interface Api extends EObject {
@@ -225,7 +226,7 @@ public interface Api extends EObject {
 	EList<Schema> getDefinitions();
 
 	/**
-	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Parameters</b></em>' reference list.
 	 * The list contents are of type {@link core.APIParameter}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -233,9 +234,9 @@ public interface Api extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parameters</em>' containment reference list.
+	 * @return the value of the '<em>Parameters</em>' reference list.
 	 * @see core.CorePackage#getApi_Parameters()
-	 * @model containment="true"
+	 * @model
 	 * @generated
 	 */
 	EList<APIParameter> getParameters();

@@ -68,6 +68,10 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 	protected CoreSwitch<Adapter> modelSwitch =
 		new CoreSwitch<Adapter>() {
 			@Override
+			public Adapter caseRoot(Root object) {
+				return createRootAdapter();
+			}
+			@Override
 			public Adapter caseApi(Api object) {
 				return createApiAdapter();
 			}
@@ -158,6 +162,20 @@ public class CoreAdapterFactory extends AdapterFactoryImpl {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
+
+	/**
+	 * Creates a new adapter for an object of class '{@link core.Root <em>Root</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see core.Root
+	 * @generated
+	 */
+	public Adapter createRootAdapter() {
+		return null;
+	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link core.Api <em>Api</em>}'.

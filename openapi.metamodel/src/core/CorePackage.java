@@ -58,6 +58,52 @@ public interface CorePackage extends EPackage {
 	CorePackage eINSTANCE = core.impl.CorePackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link core.impl.RootImpl <em>Root</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see core.impl.RootImpl
+	 * @see core.impl.CorePackageImpl#getRoot()
+	 * @generated
+	 */
+	int ROOT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Api</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROOT__API = 0;
+
+	/**
+	 * The feature id for the '<em><b>Paramters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROOT__PARAMTERS = 1;
+
+	/**
+	 * The number of structural features of the '<em>Root</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROOT_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Root</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROOT_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link core.impl.ApiImpl <em>Api</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -65,7 +111,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getApi()
 	 * @generated
 	 */
-	int API = 0;
+	int API = 1;
 
 	/**
 	 * The feature id for the '<em><b>Swagger</b></em>' attribute.
@@ -149,7 +195,7 @@ public interface CorePackage extends EPackage {
 	int API__DEFINITIONS = 8;
 
 	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Parameters</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -237,7 +283,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getInfo()
 	 * @generated
 	 */
-	int INFO = 1;
+	int INFO = 2;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -319,7 +365,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getContact()
 	 * @generated
 	 */
-	int CONTACT = 2;
+	int CONTACT = 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -374,7 +420,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getLicense()
 	 * @generated
 	 */
-	int LICENSE = 3;
+	int LICENSE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -420,7 +466,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getPath()
 	 * @generated
 	 */
-	int PATH = 4;
+	int PATH = 5;
 
 	/**
 	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
@@ -468,7 +514,7 @@ public interface CorePackage extends EPackage {
 	int PATH__OPTIONS = 4;
 
 	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Parameters</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -538,7 +584,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getAPIOperation()
 	 * @generated
 	 */
-	int API_OPERATION = 5;
+	int API_OPERATION = 6;
 
 	/**
 	 * The feature id for the '<em><b>Tags</b></em>' attribute list.
@@ -604,7 +650,7 @@ public interface CorePackage extends EPackage {
 	int API_OPERATION__PRODUCES = 6;
 
 	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Parameters</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -674,7 +720,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getExternalDocs()
 	 * @generated
 	 */
-	int EXTERNAL_DOCS = 6;
+	int EXTERNAL_DOCS = 7;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -720,7 +766,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getAPIParameter()
 	 * @generated
 	 */
-	int API_PARAMETER = 7;
+	int API_PARAMETER = 8;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -939,13 +985,22 @@ public interface CorePackage extends EPackage {
 	int API_PARAMETER__GLOBAL_NAME = 23;
 
 	/**
+	 * The feature id for the '<em><b>Operations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int API_PARAMETER__OPERATIONS = 24;
+
+	/**
 	 * The number of structural features of the '<em>API Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int API_PARAMETER_FEATURE_COUNT = 24;
+	int API_PARAMETER_FEATURE_COUNT = 25;
 
 	/**
 	 * The number of operations of the '<em>API Parameter</em>' class.
@@ -964,7 +1019,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getItems()
 	 * @generated
 	 */
-	int ITEMS = 8;
+	int ITEMS = 9;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1145,7 +1200,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getSchema()
 	 * @generated
 	 */
-	int SCHEMA = 9;
+	int SCHEMA = 10;
 
 	/**
 	 * The feature id for the '<em><b>Format</b></em>' attribute.
@@ -1461,7 +1516,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getResponse()
 	 * @generated
 	 */
-	int RESPONSE = 10;
+	int RESPONSE = 11;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1534,7 +1589,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getSecurityRequirement()
 	 * @generated
 	 */
-	int SECURITY_REQUIREMENT = 11;
+	int SECURITY_REQUIREMENT = 12;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1580,7 +1635,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getHeader()
 	 * @generated
 	 */
-	int HEADER = 12;
+	int HEADER = 13;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1779,7 +1834,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getTag()
 	 * @generated
 	 */
-	int TAG = 13;
+	int TAG = 14;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1834,7 +1889,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getSecuritySchema()
 	 * @generated
 	 */
-	int SECURITY_SCHEMA = 14;
+	int SECURITY_SCHEMA = 15;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1943,7 +1998,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getExample()
 	 * @generated
 	 */
-	int EXAMPLE = 15;
+	int EXAMPLE = 16;
 
 	/**
 	 * The feature id for the '<em><b>Mime Type</b></em>' attribute.
@@ -1989,7 +2044,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getXMLElement()
 	 * @generated
 	 */
-	int XML_ELEMENT = 16;
+	int XML_ELEMENT = 17;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2062,7 +2117,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getScope()
 	 * @generated
 	 */
-	int SCOPE = 17;
+	int SCOPE = 18;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2108,7 +2163,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getSchemeType()
 	 * @generated
 	 */
-	int SCHEME_TYPE = 18;
+	int SCHEME_TYPE = 19;
 
 	/**
 	 * The meta object id for the '{@link core.ParameterLocation <em>Parameter Location</em>}' enum.
@@ -2118,7 +2173,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getParameterLocation()
 	 * @generated
 	 */
-	int PARAMETER_LOCATION = 19;
+	int PARAMETER_LOCATION = 20;
 
 	/**
 	 * The meta object id for the '{@link core.CollectionFormat <em>Collection Format</em>}' enum.
@@ -2128,7 +2183,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getCollectionFormat()
 	 * @generated
 	 */
-	int COLLECTION_FORMAT = 20;
+	int COLLECTION_FORMAT = 21;
 
 	/**
 	 * The meta object id for the '{@link core.OAuth2FlowType <em>OAuth2 Flow Type</em>}' enum.
@@ -2138,7 +2193,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getOAuth2FlowType()
 	 * @generated
 	 */
-	int OAUTH2_FLOW_TYPE = 21;
+	int OAUTH2_FLOW_TYPE = 22;
 
 	/**
 	 * The meta object id for the '{@link core.APIKeyLocation <em>API Key Location</em>}' enum.
@@ -2148,7 +2203,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getAPIKeyLocation()
 	 * @generated
 	 */
-	int API_KEY_LOCATION = 22;
+	int API_KEY_LOCATION = 23;
 
 	/**
 	 * The meta object id for the '{@link core.SecuritySchemeType <em>Security Scheme Type</em>}' enum.
@@ -2158,7 +2213,7 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getSecuritySchemeType()
 	 * @generated
 	 */
-	int SECURITY_SCHEME_TYPE = 23;
+	int SECURITY_SCHEME_TYPE = 24;
 
 	/**
 	 * The meta object id for the '{@link core.JsonDataType <em>Json Data Type</em>}' enum.
@@ -2168,8 +2223,40 @@ public interface CorePackage extends EPackage {
 	 * @see core.impl.CorePackageImpl#getJsonDataType()
 	 * @generated
 	 */
-	int JSON_DATA_TYPE = 24;
+	int JSON_DATA_TYPE = 25;
 
+
+	/**
+	 * Returns the meta object for class '{@link core.Root <em>Root</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Root</em>'.
+	 * @see core.Root
+	 * @generated
+	 */
+	EClass getRoot();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link core.Root#getApi <em>Api</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Api</em>'.
+	 * @see core.Root#getApi()
+	 * @see #getRoot()
+	 * @generated
+	 */
+	EReference getRoot_Api();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link core.Root#getParamters <em>Paramters</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Paramters</em>'.
+	 * @see core.Root#getParamters()
+	 * @see #getRoot()
+	 * @generated
+	 */
+	EReference getRoot_Paramters();
 
 	/**
 	 * Returns the meta object for class '{@link core.Api <em>Api</em>}'.
@@ -2281,10 +2368,10 @@ public interface CorePackage extends EPackage {
 	EReference getApi_Definitions();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link core.Api#getParameters <em>Parameters</em>}'.
+	 * Returns the meta object for the reference list '{@link core.Api#getParameters <em>Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Parameters</em>'.
+	 * @return the meta object for the reference list '<em>Parameters</em>'.
 	 * @see core.Api#getParameters()
 	 * @see #getApi()
 	 * @generated
@@ -2574,10 +2661,10 @@ public interface CorePackage extends EPackage {
 	EReference getPath_Options();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link core.Path#getParameters <em>Parameters</em>}'.
+	 * Returns the meta object for the reference list '{@link core.Path#getParameters <em>Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Parameters</em>'.
+	 * @return the meta object for the reference list '<em>Parameters</em>'.
 	 * @see core.Path#getParameters()
 	 * @see #getPath()
 	 * @generated
@@ -2716,10 +2803,10 @@ public interface CorePackage extends EPackage {
 	EAttribute getAPIOperation_Produces();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link core.APIOperation#getParameters <em>Parameters</em>}'.
+	 * Returns the meta object for the reference list '{@link core.APIOperation#getParameters <em>Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Parameters</em>'.
+	 * @return the meta object for the reference list '<em>Parameters</em>'.
 	 * @see core.APIOperation#getParameters()
 	 * @see #getAPIOperation()
 	 * @generated
@@ -2846,11 +2933,11 @@ public interface CorePackage extends EPackage {
 	EAttribute getAPIParameter_Description();
 
 	/**
-	 * Returns the meta object for the attribute '{@link core.APIParameter#isRequired <em>Required</em>}'.
+	 * Returns the meta object for the attribute '{@link core.APIParameter#getRequired <em>Required</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Required</em>'.
-	 * @see core.APIParameter#isRequired()
+	 * @see core.APIParameter#getRequired()
 	 * @see #getAPIParameter()
 	 * @generated
 	 */
@@ -3075,6 +3162,17 @@ public interface CorePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAPIParameter_GlobalName();
+
+	/**
+	 * Returns the meta object for the reference list '{@link core.APIParameter#getOperations <em>Operations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Operations</em>'.
+	 * @see core.APIParameter#getOperations()
+	 * @see #getAPIParameter()
+	 * @generated
+	 */
+	EReference getAPIParameter_Operations();
 
 	/**
 	 * Returns the meta object for class '{@link core.Items <em>Items</em>}'.
@@ -4326,6 +4424,32 @@ public interface CorePackage extends EPackage {
 	 */
 	interface Literals {
 		/**
+		 * The meta object literal for the '{@link core.impl.RootImpl <em>Root</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see core.impl.RootImpl
+		 * @see core.impl.CorePackageImpl#getRoot()
+		 * @generated
+		 */
+		EClass ROOT = eINSTANCE.getRoot();
+
+		/**
+		 * The meta object literal for the '<em><b>Api</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ROOT__API = eINSTANCE.getRoot_Api();
+
+		/**
+		 * The meta object literal for the '<em><b>Paramters</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ROOT__PARAMTERS = eINSTANCE.getRoot_Paramters();
+
+		/**
 		 * The meta object literal for the '{@link core.impl.ApiImpl <em>Api</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4408,7 +4532,7 @@ public interface CorePackage extends EPackage {
 		EReference API__DEFINITIONS = eINSTANCE.getApi_Definitions();
 
 		/**
-		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Parameters</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4632,7 +4756,7 @@ public interface CorePackage extends EPackage {
 		EReference PATH__OPTIONS = eINSTANCE.getPath_Options();
 
 		/**
-		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Parameters</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4738,7 +4862,7 @@ public interface CorePackage extends EPackage {
 		EAttribute API_OPERATION__PRODUCES = eINSTANCE.getAPIOperation_Produces();
 
 		/**
-		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Parameters</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -5004,6 +5128,14 @@ public interface CorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute API_PARAMETER__GLOBAL_NAME = eINSTANCE.getAPIParameter_GlobalName();
+
+		/**
+		 * The meta object literal for the '<em><b>Operations</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference API_PARAMETER__OPERATIONS = eINSTANCE.getAPIParameter_Operations();
 
 		/**
 		 * The meta object literal for the '{@link core.impl.ItemsImpl <em>Items</em>}' class.

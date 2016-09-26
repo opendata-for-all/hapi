@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -182,7 +183,7 @@ public class ApiImpl extends MinimalEObjectImpl.Container implements Api {
 	protected EList<Schema> definitions;
 
 	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
+	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getParameters()
@@ -443,7 +444,7 @@ public class ApiImpl extends MinimalEObjectImpl.Container implements Api {
 	 */
 	public EList<APIParameter> getParameters() {
 		if (parameters == null) {
-			parameters = new EObjectContainmentEList<APIParameter>(APIParameter.class, this, CorePackage.API__PARAMETERS);
+			parameters = new EObjectResolvingEList<APIParameter>(APIParameter.class, this, CorePackage.API__PARAMETERS);
 		}
 		return parameters;
 	}
@@ -565,8 +566,6 @@ public class ApiImpl extends MinimalEObjectImpl.Container implements Api {
 				return ((InternalEList<?>)getPaths()).basicRemove(otherEnd, msgs);
 			case CorePackage.API__DEFINITIONS:
 				return ((InternalEList<?>)getDefinitions()).basicRemove(otherEnd, msgs);
-			case CorePackage.API__PARAMETERS:
-				return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
 			case CorePackage.API__RESPONSES:
 				return ((InternalEList<?>)getResponses()).basicRemove(otherEnd, msgs);
 			case CorePackage.API__SECURITY_DEFINITIONS:

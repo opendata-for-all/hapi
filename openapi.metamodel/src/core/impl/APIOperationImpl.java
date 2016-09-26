@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -153,7 +154,7 @@ public class APIOperationImpl extends MinimalEObjectImpl.Container implements AP
 	protected EList<String> produces;
 
 	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
+	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getParameters()
@@ -380,7 +381,7 @@ public class APIOperationImpl extends MinimalEObjectImpl.Container implements AP
 	 */
 	public EList<APIParameter> getParameters() {
 		if (parameters == null) {
-			parameters = new EObjectContainmentEList<APIParameter>(APIParameter.class, this, CorePackage.API_OPERATION__PARAMETERS);
+			parameters = new EObjectWithInverseResolvingEList.ManyInverse<APIParameter>(APIParameter.class, this, CorePackage.API_OPERATION__PARAMETERS, CorePackage.API_PARAMETER__OPERATIONS);
 		}
 		return parameters;
 	}
@@ -440,6 +441,21 @@ public class APIOperationImpl extends MinimalEObjectImpl.Container implements AP
 			security = new EObjectContainmentEList<SecurityRequirement>(SecurityRequirement.class, this, CorePackage.API_OPERATION__SECURITY);
 		}
 		return security;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case CorePackage.API_OPERATION__PARAMETERS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getParameters()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

@@ -409,7 +409,7 @@ public class SchemaImpl extends MinimalEObjectImpl.Container implements Schema {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final JsonDataType TYPE_EDEFAULT = JsonDataType.INTEGER;
+	protected static final JsonDataType TYPE_EDEFAULT = JsonDataType.UNSPECIFIED;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.

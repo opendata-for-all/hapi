@@ -21,6 +21,7 @@ import core.OAuth2FlowType;
 import core.ParameterLocation;
 import core.Path;
 import core.Response;
+import core.Root;
 import core.Schema;
 import core.SchemeType;
 import core.Scope;
@@ -30,12 +31,14 @@ import core.SecuritySchemeType;
 import core.Tag;
 import core.XMLElement;
 
+import core.util.CoreValidator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -45,6 +48,13 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * @generated
  */
 public class CorePackageImpl extends EPackageImpl implements CorePackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass rootEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -272,6 +282,15 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		// Initialize created meta-data
 		theCorePackage.initializePackageContents();
 
+		// Register package validator
+		EValidator.Registry.INSTANCE.put
+			(theCorePackage, 
+			 new EValidator.Descriptor() {
+				 public EValidator getEValidator() {
+					 return CoreValidator.INSTANCE;
+				 }
+			 });
+
 		// Mark meta-data to indicate it can't be changed
 		theCorePackage.freeze();
 
@@ -279,6 +298,33 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(CorePackage.eNS_URI, theCorePackage);
 		return theCorePackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRoot() {
+		return rootEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRoot_Api() {
+		return (EReference)rootEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRoot_Paramters() {
+		return (EReference)rootEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1026,6 +1072,15 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 */
 	public EAttribute getAPIParameter_GlobalName() {
 		return (EAttribute)apiParameterEClass.getEStructuralFeatures().get(23);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAPIParameter_Operations() {
+		return (EReference)apiParameterEClass.getEStructuralFeatures().get(24);
 	}
 
 	/**
@@ -2073,6 +2128,10 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		isCreated = true;
 
 		// Create classes and their features
+		rootEClass = createEClass(ROOT);
+		createEReference(rootEClass, ROOT__API);
+		createEReference(rootEClass, ROOT__PARAMTERS);
+
 		apiEClass = createEClass(API);
 		createEAttribute(apiEClass, API__SWAGGER);
 		createEReference(apiEClass, API__INFO);
@@ -2163,6 +2222,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		createEAttribute(apiParameterEClass, API_PARAMETER__DEFAULT);
 		createEAttribute(apiParameterEClass, API_PARAMETER__ENUM);
 		createEAttribute(apiParameterEClass, API_PARAMETER__GLOBAL_NAME);
+		createEReference(apiParameterEClass, API_PARAMETER__OPERATIONS);
 
 		itemsEClass = createEClass(ITEMS);
 		createEAttribute(itemsEClass, ITEMS__TYPE);
@@ -2320,6 +2380,10 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		// Add supertypes to classes
 
 		// Initialize classes, features, and operations; add parameters
+		initEClass(rootEClass, Root.class, "Root", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRoot_Api(), this.getApi(), null, "api", null, 0, 1, Root.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRoot_Paramters(), this.getAPIParameter(), null, "paramters", null, 0, -1, Root.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(apiEClass, Api.class, "Api", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getApi_Swagger(), ecorePackage.getEString(), "swagger", null, 0, 1, Api.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApi_Info(), this.getInfo(), null, "info", null, 0, 1, Api.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2330,7 +2394,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEAttribute(getApi_Produces(), ecorePackage.getEString(), "produces", null, 0, -1, Api.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApi_Paths(), this.getPath(), null, "paths", null, 1, -1, Api.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApi_Definitions(), this.getSchema(), null, "definitions", null, 0, -1, Api.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getApi_Parameters(), this.getAPIParameter(), null, "parameters", null, 0, -1, Api.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getApi_Parameters(), this.getAPIParameter(), null, "parameters", null, 0, -1, Api.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApi_Responses(), this.getResponse(), null, "responses", null, 0, -1, Api.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApi_SecurityDefinitions(), this.getSecuritySchema(), null, "securityDefinitions", null, 0, -1, Api.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApi_Security(), this.getSecurityRequirement(), null, "security", null, 0, -1, Api.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2361,7 +2425,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEReference(getPath_Get(), this.getAPIOperation(), null, "get", null, 0, 1, Path.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPath_Delete(), this.getAPIOperation(), null, "delete", null, 0, 1, Path.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPath_Options(), this.getAPIOperation(), null, "options", null, 0, 1, Path.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPath_Parameters(), this.getAPIParameter(), null, "parameters", null, 0, -1, Path.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPath_Parameters(), this.getAPIParameter(), null, "parameters", null, 0, -1, Path.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPath_Head(), this.getAPIOperation(), null, "head", null, 0, 1, Path.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPath_Post(), this.getAPIOperation(), null, "post", null, 0, 1, Path.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPath_Patch(), this.getAPIOperation(), null, "patch", null, 0, 1, Path.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2375,7 +2439,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEAttribute(getAPIOperation_OperationId(), ecorePackage.getEString(), "operationId", null, 0, 1, APIOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAPIOperation_Consumes(), ecorePackage.getEString(), "consumes", null, 0, -1, APIOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAPIOperation_Produces(), ecorePackage.getEString(), "produces", null, 0, -1, APIOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAPIOperation_Parameters(), this.getAPIParameter(), null, "parameters", null, 0, -1, APIOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAPIOperation_Parameters(), this.getAPIParameter(), this.getAPIParameter_Operations(), "parameters", null, 0, -1, APIOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAPIOperation_Responses(), this.getResponse(), null, "responses", null, 1, -1, APIOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAPIOperation_Schemes(), this.getSchemeType(), "schemes", null, 0, -1, APIOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAPIOperation_Deprecated(), ecorePackage.getEBoolean(), "deprecated", null, 0, 1, APIOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2389,7 +2453,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEAttribute(getAPIParameter_Name(), ecorePackage.getEString(), "name", null, 0, 1, APIParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAPIParameter_In(), this.getParameterLocation(), "in", null, 0, 1, APIParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAPIParameter_Description(), ecorePackage.getEString(), "description", null, 0, 1, APIParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAPIParameter_Required(), ecorePackage.getEBoolean(), "required", null, 0, 1, APIParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAPIParameter_Required(), ecorePackage.getEBooleanObject(), "required", null, 0, 1, APIParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAPIParameter_Type(), this.getJsonDataType(), "type", null, 0, 1, APIParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAPIParameter_Format(), ecorePackage.getEString(), "format", null, 0, 1, APIParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAPIParameter_AllowEmplyValue(), ecorePackage.getEBoolean(), "allowEmplyValue", null, 0, 1, APIParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2410,6 +2474,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		initEAttribute(getAPIParameter_Default(), ecorePackage.getEString(), "default", null, 0, 1, APIParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAPIParameter_Enum(), ecorePackage.getEString(), "enum", null, 0, -1, APIParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAPIParameter_GlobalName(), ecorePackage.getEString(), "globalName", null, 0, 1, APIParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAPIParameter_Operations(), this.getAPIOperation(), this.getAPIOperation_Parameters(), "operations", null, 0, -1, APIParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(itemsEClass, Items.class, "Items", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getItems_Type(), this.getJsonDataType(), "type", null, 0, 1, Items.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2535,6 +2600,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		addEEnumLiteral(schemeTypeEEnum, SchemeType.WSS);
 
 		initEEnum(parameterLocationEEnum, ParameterLocation.class, "ParameterLocation");
+		addEEnumLiteral(parameterLocationEEnum, ParameterLocation.UNSPECIFIED);
 		addEEnumLiteral(parameterLocationEEnum, ParameterLocation.QUERY);
 		addEEnumLiteral(parameterLocationEEnum, ParameterLocation.HEADER);
 		addEEnumLiteral(parameterLocationEEnum, ParameterLocation.PATH);
@@ -2542,6 +2608,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		addEEnumLiteral(parameterLocationEEnum, ParameterLocation.BODY);
 
 		initEEnum(collectionFormatEEnum, CollectionFormat.class, "CollectionFormat");
+		addEEnumLiteral(collectionFormatEEnum, CollectionFormat.UNSPECIFIED);
 		addEEnumLiteral(collectionFormatEEnum, CollectionFormat.CSV);
 		addEEnumLiteral(collectionFormatEEnum, CollectionFormat.SSV);
 		addEEnumLiteral(collectionFormatEEnum, CollectionFormat.TSV);
@@ -2549,21 +2616,25 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		addEEnumLiteral(collectionFormatEEnum, CollectionFormat.MULTI);
 
 		initEEnum(oAuth2FlowTypeEEnum, OAuth2FlowType.class, "OAuth2FlowType");
+		addEEnumLiteral(oAuth2FlowTypeEEnum, OAuth2FlowType.UNSPECIFIED);
 		addEEnumLiteral(oAuth2FlowTypeEEnum, OAuth2FlowType.IMPLICIT);
 		addEEnumLiteral(oAuth2FlowTypeEEnum, OAuth2FlowType.PASSWORD);
 		addEEnumLiteral(oAuth2FlowTypeEEnum, OAuth2FlowType.APPLICATION);
 		addEEnumLiteral(oAuth2FlowTypeEEnum, OAuth2FlowType.ACCESS_CODE);
 
 		initEEnum(apiKeyLocationEEnum, APIKeyLocation.class, "APIKeyLocation");
+		addEEnumLiteral(apiKeyLocationEEnum, APIKeyLocation.UNSPECIFIED);
 		addEEnumLiteral(apiKeyLocationEEnum, APIKeyLocation.QUERY);
 		addEEnumLiteral(apiKeyLocationEEnum, APIKeyLocation.HEADER);
 
 		initEEnum(securitySchemeTypeEEnum, SecuritySchemeType.class, "SecuritySchemeType");
+		addEEnumLiteral(securitySchemeTypeEEnum, SecuritySchemeType.UNSPECIFIED);
 		addEEnumLiteral(securitySchemeTypeEEnum, SecuritySchemeType.BASIC);
 		addEEnumLiteral(securitySchemeTypeEEnum, SecuritySchemeType.API_KEY);
 		addEEnumLiteral(securitySchemeTypeEEnum, SecuritySchemeType.OAUTH2);
 
 		initEEnum(jsonDataTypeEEnum, JsonDataType.class, "JsonDataType");
+		addEEnumLiteral(jsonDataTypeEEnum, JsonDataType.UNSPECIFIED);
 		addEEnumLiteral(jsonDataTypeEEnum, JsonDataType.INTEGER);
 		addEEnumLiteral(jsonDataTypeEEnum, JsonDataType.LONG);
 		addEEnumLiteral(jsonDataTypeEEnum, JsonDataType.FLOAT);
@@ -2581,6 +2652,125 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore/OCL
+		createOCLAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";	
+		addAnnotation
+		  (apiEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "requiredSwaggerVersion correctSwaggerVersion requiredInfoReference requiredPaths"
+		   });	
+		addAnnotation
+		  (infoEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "requiredTitle requiredAPIVerison"
+		   });	
+		addAnnotation
+		  (licenseEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "requiredName"
+		   });	
+		addAnnotation
+		  (pathEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "requiredResponses"
+		   });	
+		addAnnotation
+		  (apiOperationEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "oneBodyParameterAllowed hasUniqueParameters xorFormAndBody"
+		   });	
+		addAnnotation
+		  (externalDocsEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "requiredURL"
+		   });	
+		addAnnotation
+		  (apiParameterEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "requiredName requiredLocation"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore/OCL</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createOCLAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL";	
+		addAnnotation
+		  (apiEClass, 
+		   source, 
+		   new String[] {
+			 "requiredSwaggerVersion", "not self.swagger.oclIsUndefined()",
+			 "requiredInfoReference", "not self.info.oclIsUndefined()",
+			 "correctSwaggerVersion", "self.swagger = \'2.0\'",
+			 "requiredPaths", "not self.paths.oclIsUndefined()"
+		   });	
+		addAnnotation
+		  (infoEClass, 
+		   source, 
+		   new String[] {
+			 "requiredTitle", "not self.title.oclIsUndefined()",
+			 "requiredAPIVersion", "not self.version.oclIsUndefined()"
+		   });	
+		addAnnotation
+		  (licenseEClass, 
+		   source, 
+		   new String[] {
+			 "requiredName", "not self.name.oclIsUndefined()"
+		   });	
+		addAnnotation
+		  (pathEClass, 
+		   source, 
+		   new String[] {
+			 "requiredResponses", "not self.responses.oclIsUndefined()"
+		   });	
+		addAnnotation
+		  (apiOperationEClass, 
+		   source, 
+		   new String[] {
+			 "oneBodyParameterAllowed", "self.parameters-> select(e | e.\'_in\' = ParameterLocation::\'_body\') -> size() <= 1",
+			 "oneFormDataParameterAllowed", "self.parameters-> select(e | e.\'_in\' = ParameterLocation::\'_formData\') -> size() <= 1",
+			 "hasUniqueParameters", "self.parameters -> collect(t | Tuple{name : String = t.name,location : ParameterLocation = t._in})->asSet() -> size() = self.parameters -> size()",
+			 "xorFormAndBody", "(parameters-> select(e | e._\'in\' =  ParameterLocation::_\'body\') -> size()=1 and parameters-> select(e | e._\'in\' =  ParameterLocation::_\'formData\') -> size()=0)\r\n\tor \r\n\t(parameters-> select(e | e._\'in\' =  ParameterLocation::_\'body\') -> size()=0 and parameters-> select(e | e._\'in\' =  ParameterLocation::_\'formData\') -> size()=1)\r\n\tor \r\n\t(parameters-> select(e | e._\'in\' =  ParameterLocation::_\'body\') -> size()=0 and parameters-> select(e | e._\'in\' =  ParameterLocation::_\'formData\') -> size()=0)\r\n\t"
+		   });	
+		addAnnotation
+		  (externalDocsEClass, 
+		   source, 
+		   new String[] {
+			 "requiredURL", "not self.url.oclIsUndefined()"
+		   });	
+		addAnnotation
+		  (apiParameterEClass, 
+		   source, 
+		   new String[] {
+			 "requiredName", "not name.oclIsUndefined()",
+			 "requiredLocation", "not \'_in\' = ParameterLocation::unspecified",
+			 "requiredRequiredIfLocationIsPath", ""
+		   });
 	}
 
 } //CorePackageImpl

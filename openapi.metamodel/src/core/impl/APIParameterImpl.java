@@ -2,6 +2,7 @@
  */
 package core.impl;
 
+import core.APIOperation;
 import core.APIParameter;
 import core.CollectionFormat;
 import core.CorePackage;
@@ -24,6 +25,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,7 +39,7 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
  *   <li>{@link core.impl.APIParameterImpl#getName <em>Name</em>}</li>
  *   <li>{@link core.impl.APIParameterImpl#getIn <em>In</em>}</li>
  *   <li>{@link core.impl.APIParameterImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link core.impl.APIParameterImpl#isRequired <em>Required</em>}</li>
+ *   <li>{@link core.impl.APIParameterImpl#getRequired <em>Required</em>}</li>
  *   <li>{@link core.impl.APIParameterImpl#getType <em>Type</em>}</li>
  *   <li>{@link core.impl.APIParameterImpl#getFormat <em>Format</em>}</li>
  *   <li>{@link core.impl.APIParameterImpl#isAllowEmplyValue <em>Allow Emply Value</em>}</li>
@@ -57,6 +60,7 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
  *   <li>{@link core.impl.APIParameterImpl#getDefault <em>Default</em>}</li>
  *   <li>{@link core.impl.APIParameterImpl#getEnum <em>Enum</em>}</li>
  *   <li>{@link core.impl.APIParameterImpl#getGlobalName <em>Global Name</em>}</li>
+ *   <li>{@link core.impl.APIParameterImpl#getOperations <em>Operations</em>}</li>
  * </ul>
  *
  * @generated
@@ -90,7 +94,7 @@ public class APIParameterImpl extends MinimalEObjectImpl.Container implements AP
 	 * @generated
 	 * @ordered
 	 */
-	protected static final ParameterLocation IN_EDEFAULT = ParameterLocation.QUERY;
+	protected static final ParameterLocation IN_EDEFAULT = ParameterLocation.UNSPECIFIED;
 
 	/**
 	 * The cached value of the '{@link #getIn() <em>In</em>}' attribute.
@@ -123,24 +127,24 @@ public class APIParameterImpl extends MinimalEObjectImpl.Container implements AP
 	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isRequired() <em>Required</em>}' attribute.
+	 * The default value of the '{@link #getRequired() <em>Required</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isRequired()
+	 * @see #getRequired()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean REQUIRED_EDEFAULT = false;
+	protected static final Boolean REQUIRED_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isRequired() <em>Required</em>}' attribute.
+	 * The cached value of the '{@link #getRequired() <em>Required</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isRequired()
+	 * @see #getRequired()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean required = REQUIRED_EDEFAULT;
+	protected Boolean required = REQUIRED_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -150,7 +154,7 @@ public class APIParameterImpl extends MinimalEObjectImpl.Container implements AP
 	 * @generated
 	 * @ordered
 	 */
-	protected static final JsonDataType TYPE_EDEFAULT = JsonDataType.INTEGER;
+	protected static final JsonDataType TYPE_EDEFAULT = JsonDataType.UNSPECIFIED;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -220,7 +224,7 @@ public class APIParameterImpl extends MinimalEObjectImpl.Container implements AP
 	 * @generated
 	 * @ordered
 	 */
-	protected static final CollectionFormat COLLECTION_FORMAT_EDEFAULT = CollectionFormat.CSV;
+	protected static final CollectionFormat COLLECTION_FORMAT_EDEFAULT = CollectionFormat.UNSPECIFIED;
 
 	/**
 	 * The cached value of the '{@link #getCollectionFormat() <em>Collection Format</em>}' attribute.
@@ -513,6 +517,16 @@ public class APIParameterImpl extends MinimalEObjectImpl.Container implements AP
 	protected String globalName = GLOBAL_NAME_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getOperations() <em>Operations</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOperations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<APIOperation> operations;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -599,7 +613,7 @@ public class APIParameterImpl extends MinimalEObjectImpl.Container implements AP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isRequired() {
+	public Boolean getRequired() {
 		return required;
 	}
 
@@ -608,8 +622,8 @@ public class APIParameterImpl extends MinimalEObjectImpl.Container implements AP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRequired(boolean newRequired) {
-		boolean oldRequired = required;
+	public void setRequired(Boolean newRequired) {
+		Boolean oldRequired = required;
 		required = newRequired;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.API_PARAMETER__REQUIRED, oldRequired, required));
@@ -1070,11 +1084,40 @@ public class APIParameterImpl extends MinimalEObjectImpl.Container implements AP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<APIOperation> getOperations() {
+		if (operations == null) {
+			operations = new EObjectWithInverseResolvingEList.ManyInverse<APIOperation>(APIOperation.class, this, CorePackage.API_PARAMETER__OPERATIONS, CorePackage.API_OPERATION__PARAMETERS);
+		}
+		return operations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case CorePackage.API_PARAMETER__OPERATIONS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOperations()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case CorePackage.API_PARAMETER__ITEMS:
 				return basicSetItems(null, msgs);
+			case CorePackage.API_PARAMETER__OPERATIONS:
+				return ((InternalEList<?>)getOperations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1094,7 +1137,7 @@ public class APIParameterImpl extends MinimalEObjectImpl.Container implements AP
 			case CorePackage.API_PARAMETER__DESCRIPTION:
 				return getDescription();
 			case CorePackage.API_PARAMETER__REQUIRED:
-				return isRequired();
+				return getRequired();
 			case CorePackage.API_PARAMETER__TYPE:
 				return getType();
 			case CorePackage.API_PARAMETER__FORMAT:
@@ -1136,6 +1179,8 @@ public class APIParameterImpl extends MinimalEObjectImpl.Container implements AP
 				return getEnum();
 			case CorePackage.API_PARAMETER__GLOBAL_NAME:
 				return getGlobalName();
+			case CorePackage.API_PARAMETER__OPERATIONS:
+				return getOperations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1222,6 +1267,10 @@ public class APIParameterImpl extends MinimalEObjectImpl.Container implements AP
 			case CorePackage.API_PARAMETER__GLOBAL_NAME:
 				setGlobalName((String)newValue);
 				return;
+			case CorePackage.API_PARAMETER__OPERATIONS:
+				getOperations().clear();
+				getOperations().addAll((Collection<? extends APIOperation>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1306,6 +1355,9 @@ public class APIParameterImpl extends MinimalEObjectImpl.Container implements AP
 			case CorePackage.API_PARAMETER__GLOBAL_NAME:
 				setGlobalName(GLOBAL_NAME_EDEFAULT);
 				return;
+			case CorePackage.API_PARAMETER__OPERATIONS:
+				getOperations().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1325,7 +1377,7 @@ public class APIParameterImpl extends MinimalEObjectImpl.Container implements AP
 			case CorePackage.API_PARAMETER__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case CorePackage.API_PARAMETER__REQUIRED:
-				return required != REQUIRED_EDEFAULT;
+				return REQUIRED_EDEFAULT == null ? required != null : !REQUIRED_EDEFAULT.equals(required);
 			case CorePackage.API_PARAMETER__TYPE:
 				return type != TYPE_EDEFAULT;
 			case CorePackage.API_PARAMETER__FORMAT:
@@ -1366,6 +1418,8 @@ public class APIParameterImpl extends MinimalEObjectImpl.Container implements AP
 				return enum_ != null && !enum_.isEmpty();
 			case CorePackage.API_PARAMETER__GLOBAL_NAME:
 				return GLOBAL_NAME_EDEFAULT == null ? globalName != null : !GLOBAL_NAME_EDEFAULT.equals(globalName);
+			case CorePackage.API_PARAMETER__OPERATIONS:
+				return operations != null && !operations.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

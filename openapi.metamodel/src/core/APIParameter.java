@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link core.APIParameter#getName <em>Name</em>}</li>
  *   <li>{@link core.APIParameter#getIn <em>In</em>}</li>
  *   <li>{@link core.APIParameter#getDescription <em>Description</em>}</li>
- *   <li>{@link core.APIParameter#isRequired <em>Required</em>}</li>
+ *   <li>{@link core.APIParameter#getRequired <em>Required</em>}</li>
  *   <li>{@link core.APIParameter#getType <em>Type</em>}</li>
  *   <li>{@link core.APIParameter#getFormat <em>Format</em>}</li>
  *   <li>{@link core.APIParameter#isAllowEmplyValue <em>Allow Emply Value</em>}</li>
@@ -39,10 +39,12 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link core.APIParameter#getDefault <em>Default</em>}</li>
  *   <li>{@link core.APIParameter#getEnum <em>Enum</em>}</li>
  *   <li>{@link core.APIParameter#getGlobalName <em>Global Name</em>}</li>
+ *   <li>{@link core.APIParameter#getOperations <em>Operations</em>}</li>
  * </ul>
  *
  * @see core.CorePackage#getAPIParameter()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='requiredName requiredLocation'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL requiredName='not name.oclIsUndefined()' requiredLocation='not \'_in\' = ParameterLocation::unspecified' requiredRequiredIfLocationIsPath=''"
  * @generated
  */
 public interface APIParameter extends EObject {
@@ -136,22 +138,22 @@ public interface APIParameter extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Required</em>' attribute.
-	 * @see #setRequired(boolean)
+	 * @see #setRequired(Boolean)
 	 * @see core.CorePackage#getAPIParameter_Required()
 	 * @model
 	 * @generated
 	 */
-	boolean isRequired();
+	Boolean getRequired();
 
 	/**
-	 * Sets the value of the '{@link core.APIParameter#isRequired <em>Required</em>}' attribute.
+	 * Sets the value of the '{@link core.APIParameter#getRequired <em>Required</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Required</em>' attribute.
-	 * @see #isRequired()
+	 * @see #getRequired()
 	 * @generated
 	 */
-	void setRequired(boolean value);
+	void setRequired(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' attribute.
@@ -669,5 +671,23 @@ public interface APIParameter extends EObject {
 	 * @generated
 	 */
 	void setGlobalName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Operations</b></em>' reference list.
+	 * The list contents are of type {@link core.APIOperation}.
+	 * It is bidirectional and its opposite is '{@link core.APIOperation#getParameters <em>Parameters</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Operations</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Operations</em>' reference list.
+	 * @see core.CorePackage#getAPIParameter_Operations()
+	 * @see core.APIOperation#getParameters
+	 * @model opposite="parameters"
+	 * @generated
+	 */
+	EList<APIOperation> getOperations();
 
 } // APIParameter

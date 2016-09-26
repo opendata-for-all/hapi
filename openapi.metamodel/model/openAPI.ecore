@@ -1,7 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="core" nsURI="http://example.com/openAPI/core" nsPrefix="openAPI.core">
+  <eClassifiers xsi:type="ecore:EClass" name="JsonSchemaValidation" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maximum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exclusiveMaximum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minimum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exclusiveMinimum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxLength" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minLength" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxItems" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minItems" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uniqueItems" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enum" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multipleOf" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Root">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="api" eType="#//Api" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="paramters" upperBound="-1"
+        eType="#//APIParameter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="definitions" upperBound="-1"
+        eType="#//Schema" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="responses" upperBound="-1"
+        eType="#//Root" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Api">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="requiredSwaggerVersion correctSwaggerVersion requiredInfoReference requiredPaths"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
+      <details key="requiredSwaggerVersion" value="not self.swagger.oclIsUndefined()"/>
+      <details key="requiredInfoReference" value="not self.info.oclIsUndefined()"/>
+      <details key="correctSwaggerVersion" value="self.swagger = '2.0'"/>
+      <details key="requiredPaths" value="not self.paths.oclIsUndefined()"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="swagger" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="info" eType="#//Info" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="host" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -17,7 +50,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="definitions" upperBound="-1"
         eType="#//Schema" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
-        eType="#//APIParameter" containment="true"/>
+        eType="#//APIParameter"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="responses" upperBound="-1"
         eType="#//Response" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="securityDefinitions" upperBound="-1"
@@ -32,6 +65,13 @@
         eType="#//Schema" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Info">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="requiredTitle requiredAPIVerison"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
+      <details key="requiredTitle" value="not self.title.oclIsUndefined()"/>
+      <details key="requiredAPIVersion" value="not self.version.oclIsUndefined()"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="termsOfServices" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -47,6 +87,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="email" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="License">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="requiredName"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
+      <details key="requiredName" value="not self.name.oclIsUndefined()"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -57,26 +103,29 @@
     <eLiterals name="wss" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Path">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="requiredResponses"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
+      <details key="requiredResponses" value="not self.responses.oclIsUndefined()"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="put" eType="#//APIOperation"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="get" eType="#//APIOperation"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="delete" eType="#//APIOperation"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="options" eType="#//APIOperation"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
-        eType="#//APIParameter" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="head" eType="#//APIOperation"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="post" eType="#//APIOperation"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="patch" eType="#//APIOperation"
-        containment="true"/>
+        eType="#//APIParameter"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
+        eType="#//APIOperation" containment="true" eOpposite="#//APIOperation/path"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="APIOperation">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="oneBodyParameterAllowed hasUniqueParameters xorFormAndBody"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
+      <details key="oneBodyParameterAllowed" value="self.parameters-> select(e | e.'_in' = ParameterLocation::'_body') -> size() &lt;= 1"/>
+      <details key="oneFormDataParameterAllowed" value="self.parameters-> select(e | e.'_in' = ParameterLocation::'_formData') -> size() &lt;= 1"/>
+      <details key="hasUniqueParameters" value="self.parameters -> collect(t | Tuple{name : String = t.name,location : ParameterLocation = t._in})->asSet() -> size() = self.parameters -> size()"/>
+      <details key="xorFormAndBody" value="(parameters-> select(e | e._'in' =  ParameterLocation::_'body') -> size()=1 and parameters-> select(e | e._'in' =  ParameterLocation::_'formData') -> size()=0)&#xD;&#xA;&#x9;or &#xD;&#xA;&#x9;(parameters-> select(e | e._'in' =  ParameterLocation::_'body') -> size()=0 and parameters-> select(e | e._'in' =  ParameterLocation::_'formData') -> size()=1)&#xD;&#xA;&#x9;or &#xD;&#xA;&#x9;(parameters-> select(e | e._'in' =  ParameterLocation::_'body') -> size()=0 and parameters-> select(e | e._'in' =  ParameterLocation::_'formData') -> size()=0)&#xD;&#xA;&#x9;"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tags" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="summary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -88,7 +137,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="produces" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
-        eType="#//APIParameter" containment="true"/>
+        eType="#//APIParameter" eOpposite="#//APIParameter/operations"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="responses" lowerBound="1"
         upperBound="-1" eType="#//Response" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="schemes" upperBound="-1"
@@ -96,90 +145,65 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="deprecated" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="security" upperBound="-1"
         eType="#//SecurityRequirement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="path" eType="#//Path" eOpposite="#//Path/operations"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="httpMethod" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExternalDocs">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="requiredURL"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
+      <details key="requiredURL" value="not self.url.oclIsUndefined()"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="APIParameter">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="requiredName requiredLocation"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
+      <details key="requiredName" value="not name.oclIsUndefined()"/>
+      <details key="requiredLocation" value="not '_in' = ParameterLocation::unspecified"/>
+      <details key="requiredRequiredIfLocationIsPath" value=""/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="in" eType="#//ParameterLocation"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="required" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="required" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//JsonDataType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="format" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="allowEmplyValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="items" eType="#//Items"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="allowEmplyValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="items" eType="#//ItemsDefinition"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="collectionFormat" eType="#//CollectionFormat"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maximum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exclusiveMaximum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minimum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exclusiveMinimum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxLength" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minLength" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxItems" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minItems" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uniqueItems" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multipleOf" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="schema" eType="#//Schema"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="schema" eType="#//Schema"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="enum" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="globalName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="referenceName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
+        eType="#//APIOperation" eOpposite="#//APIOperation/parameters"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ParameterLocation">
-    <eLiterals name="query"/>
-    <eLiterals name="header" value="1"/>
-    <eLiterals name="path" value="2"/>
-    <eLiterals name="formData" value="3"/>
-    <eLiterals name="body" value="4"/>
+    <eLiterals name="unspecified" literal="unspecified"/>
+    <eLiterals name="query" value="1"/>
+    <eLiterals name="header" value="2"/>
+    <eLiterals name="path" value="3"/>
+    <eLiterals name="formData" value="4"/>
+    <eLiterals name="body" value="5"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Items">
+  <eClassifiers xsi:type="ecore:EClass" name="ItemsDefinition" eSuperTypes="#//JsonSchemaValidation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//JsonDataType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="format" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="items" eType="#//Items"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="items" eType="#//ItemsDefinition"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="collectionFormat" eType="#//CollectionFormat"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maximum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exclusiveMaximum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minimum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exclusiveMinimum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxLength" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minLength" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxItems" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minItems" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uniqueItems" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multipleOf" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enum" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="CollectionFormat">
-    <eLiterals name="csv"/>
-    <eLiterals name="ssv" value="1"/>
-    <eLiterals name="tsv" value="2"/>
-    <eLiterals name="pipes" value="3"/>
-    <eLiterals name="multi" value="4"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Schema">
+  <eClassifiers xsi:type="ecore:EClass" name="Schema" eSuperTypes="#//JsonSchemaValidation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="format" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multipleOf" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maximum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exclusiveMaximum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxLength" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minLength" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minimum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ExclusiveMinimum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxItems" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minItems" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uniqueItems" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxProperties" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minProperties" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="required" upperBound="-1"
@@ -188,7 +212,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//Schema"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="example" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enum" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="externaldocs" eType="#//ExternalDocs"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allOf" upperBound="-1"
@@ -220,12 +243,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Header">
+  <eClassifiers xsi:type="ecore:EClass" name="Header" eSuperTypes="#//JsonSchemaValidation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//JsonDataType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="format" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="collectionFormat" eType="#//CollectionFormat"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="items" eType="#//Items"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="items" eType="#//ItemsDefinition"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="default" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="exclusiveMinimum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -260,36 +283,48 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="scopes" upperBound="-1"
         eType="#//Scope" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CollectionFormat">
+    <eLiterals name="unspecified" literal="unspecified"/>
+    <eLiterals name="csv" value="1"/>
+    <eLiterals name="ssv" value="2"/>
+    <eLiterals name="tsv" value="3"/>
+    <eLiterals name="pipes" value="4"/>
+    <eLiterals name="multi" value="5"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="OAuth2FlowType">
-    <eLiterals name="implicit"/>
-    <eLiterals name="password" value="1"/>
-    <eLiterals name="application" value="2"/>
-    <eLiterals name="accessCode" value="3"/>
+    <eLiterals name="unspecified" literal="unspecified"/>
+    <eLiterals name="implicit" value="1"/>
+    <eLiterals name="password" value="2"/>
+    <eLiterals name="application" value="3"/>
+    <eLiterals name="accessCode" value="4"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="APIKeyLocation">
-    <eLiterals name="query"/>
-    <eLiterals name="header" value="1"/>
+    <eLiterals name="unspecified" literal="unspecified"/>
+    <eLiterals name="query" value="1"/>
+    <eLiterals name="header" value="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="SecuritySchemeType">
-    <eLiterals name="basic"/>
-    <eLiterals name="apiKey" value="1"/>
-    <eLiterals name="oauth2" value="2"/>
+    <eLiterals name="unspecified" literal="unspecified"/>
+    <eLiterals name="basic" value="1"/>
+    <eLiterals name="apiKey" value="2"/>
+    <eLiterals name="oauth2" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="JsonDataType">
-    <eLiterals name="integer"/>
-    <eLiterals name="long" value="1"/>
-    <eLiterals name="float" value="2"/>
-    <eLiterals name="double" value="3"/>
-    <eLiterals name="string" value="4"/>
-    <eLiterals name="byte" value="5"/>
-    <eLiterals name="binary" value="6"/>
-    <eLiterals name="boolean" value="7"/>
-    <eLiterals name="date" value="8"/>
-    <eLiterals name="dateTime" value="9"/>
-    <eLiterals name="password" value="10"/>
-    <eLiterals name="object" value="11"/>
-    <eLiterals name="file" value="12"/>
-    <eLiterals name="array" value="13" literal="array"/>
+    <eLiterals name="unspecified" literal="unspecified"/>
+    <eLiterals name="integer" value="1"/>
+    <eLiterals name="long" value="2"/>
+    <eLiterals name="float" value="3"/>
+    <eLiterals name="double" value="4"/>
+    <eLiterals name="string" value="5"/>
+    <eLiterals name="byte" value="6"/>
+    <eLiterals name="binary" value="7"/>
+    <eLiterals name="boolean" value="8"/>
+    <eLiterals name="date" value="9"/>
+    <eLiterals name="dateTime" value="10"/>
+    <eLiterals name="password" value="11"/>
+    <eLiterals name="object" value="12"/>
+    <eLiterals name="file" value="13"/>
+    <eLiterals name="array" value="14" literal="array"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Example">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mimeType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

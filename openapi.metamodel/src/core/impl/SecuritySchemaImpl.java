@@ -55,7 +55,7 @@ public class SecuritySchemaImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final SecuritySchemeType TYPE_EDEFAULT = SecuritySchemeType.BASIC;
+	protected static final SecuritySchemeType TYPE_EDEFAULT = SecuritySchemeType.UNSPECIFIED;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -115,7 +115,7 @@ public class SecuritySchemaImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final APIKeyLocation IN_EDEFAULT = APIKeyLocation.QUERY;
+	protected static final APIKeyLocation IN_EDEFAULT = APIKeyLocation.UNSPECIFIED;
 
 	/**
 	 * The cached value of the '{@link #getIn() <em>In</em>}' attribute.
@@ -135,7 +135,7 @@ public class SecuritySchemaImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final OAuth2FlowType FLOW_EDEFAULT = OAuth2FlowType.IMPLICIT;
+	protected static final OAuth2FlowType FLOW_EDEFAULT = OAuth2FlowType.UNSPECIFIED;
 
 	/**
 	 * The cached value of the '{@link #getFlow() <em>Flow</em>}' attribute.

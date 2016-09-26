@@ -22,6 +22,15 @@ public interface CoreFactory extends EFactory {
 	CoreFactory eINSTANCE = core.impl.CoreFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Root</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Root</em>'.
+	 * @generated
+	 */
+	Root createRoot();
+
+	/**
 	 * Returns a new object of class '<em>Api</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

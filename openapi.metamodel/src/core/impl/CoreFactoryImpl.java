@@ -57,6 +57,7 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case CorePackage.ROOT: return createRoot();
 			case CorePackage.API: return createApi();
 			case CorePackage.INFO: return createInfo();
 			case CorePackage.CONTACT: return createContact();
@@ -132,6 +133,16 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Root createRoot() {
+		RootImpl root = new RootImpl();
+		return root;
 	}
 
 	/**

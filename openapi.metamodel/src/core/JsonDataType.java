@@ -19,6 +19,14 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum JsonDataType implements Enumerator {
 	/**
+	 * The '<em><b>Unspecified</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #UNSPECIFIED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	UNSPECIFIED(0, "unspecified", "unspecified"), /**
 	 * The '<em><b>Integer</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -26,7 +34,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	INTEGER(0, "integer", "integer"),
+	INTEGER(1, "integer", "integer"),
 
 	/**
 	 * The '<em><b>Long</b></em>' literal object.
@@ -36,7 +44,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	LONG(1, "long", "long"),
+	LONG(2, "long", "long"),
 
 	/**
 	 * The '<em><b>Float</b></em>' literal object.
@@ -46,7 +54,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	FLOAT(2, "float", "float"),
+	FLOAT(3, "float", "float"),
 
 	/**
 	 * The '<em><b>Double</b></em>' literal object.
@@ -56,7 +64,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	DOUBLE(3, "double", "double"),
+	DOUBLE(4, "double", "double"),
 
 	/**
 	 * The '<em><b>String</b></em>' literal object.
@@ -66,7 +74,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	STRING(4, "string", "string"),
+	STRING(5, "string", "string"),
 
 	/**
 	 * The '<em><b>Byte</b></em>' literal object.
@@ -76,7 +84,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	BYTE(5, "byte", "byte"),
+	BYTE(6, "byte", "byte"),
 
 	/**
 	 * The '<em><b>Binary</b></em>' literal object.
@@ -86,7 +94,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	BINARY(6, "binary", "binary"),
+	BINARY(7, "binary", "binary"),
 
 	/**
 	 * The '<em><b>Boolean</b></em>' literal object.
@@ -96,7 +104,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	BOOLEAN(7, "boolean", "boolean"),
+	BOOLEAN(8, "boolean", "boolean"),
 
 	/**
 	 * The '<em><b>Date</b></em>' literal object.
@@ -106,7 +114,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	DATE(8, "date", "date"),
+	DATE(9, "date", "date"),
 
 	/**
 	 * The '<em><b>Date Time</b></em>' literal object.
@@ -116,7 +124,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	DATE_TIME(9, "dateTime", "dateTime"),
+	DATE_TIME(10, "dateTime", "dateTime"),
 
 	/**
 	 * The '<em><b>Password</b></em>' literal object.
@@ -126,7 +134,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	PASSWORD(10, "password", "password"),
+	PASSWORD(11, "password", "password"),
 
 	/**
 	 * The '<em><b>Object</b></em>' literal object.
@@ -136,7 +144,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	OBJECT(11, "object", "object"),
+	OBJECT(12, "object", "object"),
 
 	/**
 	 * The '<em><b>File</b></em>' literal object.
@@ -146,7 +154,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	FILE(12, "file", "file"),
+	FILE(13, "file", "file"),
 
 	/**
 	 * The '<em><b>Array</b></em>' literal object.
@@ -156,7 +164,22 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ARRAY(13, "array", "array");
+	ARRAY(14, "array", "array");
+
+	/**
+	 * The '<em><b>Unspecified</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Unspecified</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #UNSPECIFIED
+	 * @model name="unspecified"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int UNSPECIFIED_VALUE = 0;
 
 	/**
 	 * The '<em><b>Integer</b></em>' literal value.
@@ -171,7 +194,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int INTEGER_VALUE = 0;
+	public static final int INTEGER_VALUE = 1;
 
 	/**
 	 * The '<em><b>Long</b></em>' literal value.
@@ -186,7 +209,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int LONG_VALUE = 1;
+	public static final int LONG_VALUE = 2;
 
 	/**
 	 * The '<em><b>Float</b></em>' literal value.
@@ -201,7 +224,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int FLOAT_VALUE = 2;
+	public static final int FLOAT_VALUE = 3;
 
 	/**
 	 * The '<em><b>Double</b></em>' literal value.
@@ -216,7 +239,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int DOUBLE_VALUE = 3;
+	public static final int DOUBLE_VALUE = 4;
 
 	/**
 	 * The '<em><b>String</b></em>' literal value.
@@ -231,7 +254,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int STRING_VALUE = 4;
+	public static final int STRING_VALUE = 5;
 
 	/**
 	 * The '<em><b>Byte</b></em>' literal value.
@@ -246,7 +269,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int BYTE_VALUE = 5;
+	public static final int BYTE_VALUE = 6;
 
 	/**
 	 * The '<em><b>Binary</b></em>' literal value.
@@ -261,7 +284,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int BINARY_VALUE = 6;
+	public static final int BINARY_VALUE = 7;
 
 	/**
 	 * The '<em><b>Boolean</b></em>' literal value.
@@ -276,7 +299,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int BOOLEAN_VALUE = 7;
+	public static final int BOOLEAN_VALUE = 8;
 
 	/**
 	 * The '<em><b>Date</b></em>' literal value.
@@ -291,7 +314,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int DATE_VALUE = 8;
+	public static final int DATE_VALUE = 9;
 
 	/**
 	 * The '<em><b>Date Time</b></em>' literal value.
@@ -306,7 +329,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int DATE_TIME_VALUE = 9;
+	public static final int DATE_TIME_VALUE = 10;
 
 	/**
 	 * The '<em><b>Password</b></em>' literal value.
@@ -321,7 +344,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PASSWORD_VALUE = 10;
+	public static final int PASSWORD_VALUE = 11;
 
 	/**
 	 * The '<em><b>Object</b></em>' literal value.
@@ -336,7 +359,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int OBJECT_VALUE = 11;
+	public static final int OBJECT_VALUE = 12;
 
 	/**
 	 * The '<em><b>File</b></em>' literal value.
@@ -351,7 +374,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int FILE_VALUE = 12;
+	public static final int FILE_VALUE = 13;
 
 	/**
 	 * The '<em><b>Array</b></em>' literal value.
@@ -366,7 +389,7 @@ public enum JsonDataType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ARRAY_VALUE = 13;
+	public static final int ARRAY_VALUE = 14;
 
 	/**
 	 * An array of all the '<em><b>Json Data Type</b></em>' enumerators.
@@ -376,6 +399,7 @@ public enum JsonDataType implements Enumerator {
 	 */
 	private static final JsonDataType[] VALUES_ARRAY =
 		new JsonDataType[] {
+			UNSPECIFIED,
 			INTEGER,
 			LONG,
 			FLOAT,
@@ -446,6 +470,7 @@ public enum JsonDataType implements Enumerator {
 	 */
 	public static JsonDataType get(int value) {
 		switch (value) {
+			case UNSPECIFIED_VALUE: return UNSPECIFIED;
 			case INTEGER_VALUE: return INTEGER;
 			case LONG_VALUE: return LONG;
 			case FLOAT_VALUE: return FLOAT;

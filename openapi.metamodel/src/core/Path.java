@@ -28,7 +28,8 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see core.CorePackage#getPath()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='requiredResponses'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL requiredResponses='not self.responses.oclIsUndefined()'"
  * @generated
  */
 public interface Path extends EObject {
@@ -163,7 +164,7 @@ public interface Path extends EObject {
 	void setOptions(APIOperation value);
 
 	/**
-	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Parameters</b></em>' reference list.
 	 * The list contents are of type {@link core.APIParameter}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -171,9 +172,9 @@ public interface Path extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parameters</em>' containment reference list.
+	 * @return the value of the '<em>Parameters</em>' reference list.
 	 * @see core.CorePackage#getPath_Parameters()
-	 * @model containment="true"
+	 * @model
 	 * @generated
 	 */
 	EList<APIParameter> getParameters();

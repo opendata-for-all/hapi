@@ -19,9 +19,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -107,7 +105,7 @@ public class PathImpl extends MinimalEObjectImpl.Container implements Path {
 	protected APIOperation options;
 
 	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
+	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getParameters()
@@ -385,7 +383,7 @@ public class PathImpl extends MinimalEObjectImpl.Container implements Path {
 	 */
 	public EList<APIParameter> getParameters() {
 		if (parameters == null) {
-			parameters = new EObjectContainmentEList<APIParameter>(APIParameter.class, this, CorePackage.PATH__PARAMETERS);
+			parameters = new EObjectResolvingEList<APIParameter>(APIParameter.class, this, CorePackage.PATH__PARAMETERS);
 		}
 		return parameters;
 	}
@@ -556,8 +554,6 @@ public class PathImpl extends MinimalEObjectImpl.Container implements Path {
 				return basicSetDelete(null, msgs);
 			case CorePackage.PATH__OPTIONS:
 				return basicSetOptions(null, msgs);
-			case CorePackage.PATH__PARAMETERS:
-				return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
 			case CorePackage.PATH__HEAD:
 				return basicSetHead(null, msgs);
 			case CorePackage.PATH__POST:
