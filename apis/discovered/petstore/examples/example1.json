@@ -1,0 +1,11 @@
+{
+  "request": {
+    "url": "Http://petstore.swagger.io/v2/pet/123",
+    "method": "GET",
+    "body": ""
+  },
+  "response": {
+    "status": "200",
+    "body": "{\"id\":123,\"category\":{\"id\":1,\"name\":\"dogs\"},\"name\":\"doggie\",\"photoUrls\":[\"http://example.com\"],\"tags\":[{\"id\":1,\"name\":\"black\"}],\"status\":\"available\"}"
+  }
+}
