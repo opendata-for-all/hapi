@@ -6,6 +6,9 @@
   },
   "host": "petstore.swagger.io",
   "basePath": "/v2",
+  "schemes": [
+    "http"
+  ],
   "paths": {
     "/pet/{petId}": {
       "get": {
@@ -16,12 +19,16 @@
           {
             "name": "petId",
             "in": "path",
+            "type": "integer",
             "required": true
           }
         ],
         "responses": {
           "200": {
-            "schema": "#/definitions/Pet"
+            "description": "\u003cAdd response description\u003e",
+            "schema": {
+              "$ref": "#/definitions/Pet"
+            }
           }
         }
       }
@@ -46,7 +53,7 @@
         "status": {
           "type": "string"
         },
-        "category": {
+        "Category": {
           "$ref": "#/definitions/Category"
         },
         "tags": {
