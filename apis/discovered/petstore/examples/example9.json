@@ -1,0 +1,11 @@
+{
+  "request": {
+    "url": "http://petstore.swagger.io/v2/store/order/123",
+    "method": "GET",
+    "body": ""
+  },
+  "response": {
+    "status": "200",
+    "body": "{\r\n  \"id\": 0,\r\n  \"petId\": 0,\r\n  \"quantity\": 0,\r\n  \"shipDate\": \"2016-12-09T16:23:44.003Z\",\r\n  \"status\": \"placed\",\r\n  \"complete\": false\r\n}"
+  }
+}

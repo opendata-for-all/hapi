@@ -1,0 +1,11 @@
+{
+  "request": {
+    "url": "http://petstore.swagger.io/v2/store/order/123",
+    "method": "DELETE",
+    "body": ""
+  },
+  "response": {
+    "status": "200",
+    "body": ""
+  }
+}

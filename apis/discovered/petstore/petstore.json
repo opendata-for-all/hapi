@@ -19,7 +19,6 @@
           {
             "name": "petId",
             "in": "path",
-            "type": "integer",
             "required": true
           }
         ],
@@ -29,6 +28,155 @@
             "schema": {
               "$ref": "#/definitions/Pet"
             }
+          }
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "\u003cAdd response description\u003e"
+          }
+        }
+      }
+    },
+    "/pet": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Pet"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "\u003cAdd response description\u003e",
+            "schema": {
+              "$ref": "#/definitions/Pet"
+            }
+          }
+        }
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Pet"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "\u003cAdd response description\u003e",
+            "schema": {
+              "$ref": "#/definitions/Pet"
+            }
+          }
+        }
+      }
+    },
+    "/pet/findByStatus": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "type": "array",
+            "collectionFormat": "multi",
+            "items": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "\u003cAdd response description\u003e",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pet"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/store/order": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "\u003cAdd response description\u003e",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Order"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/store/order/{orderId}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "\u003cAdd response description\u003e",
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          }
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "\u003cAdd response description\u003e"
           }
         }
       }
@@ -83,6 +231,35 @@
         },
         "name": {
           "type": "string"
+        }
+      }
+    },
+    "Order": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "photoUrls": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "type": "string"
+        },
+        "Category": {
+          "$ref": "#/definitions/Category"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Tag"
+          }
         }
       }
     }

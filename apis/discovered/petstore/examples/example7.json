@@ -1,0 +1,11 @@
+{
+  "request": {
+    "url": "http://petstore.swagger.io/v2/store/order",
+    "method": "GET",
+    "body": ""
+  },
+  "response": {
+    "status": "200",
+    "body": "[{\"id\":6,\"category\":{\"id\":1,\"name\":\"Dogs\"},\"name\":\"Dog and others op de planeet\",\"photoUrls\":[\"url1\",\"url2\"],\"tags\":[{\"id\":1,\"name\":\"tag3\"},{\"id\":2,\"name\":\"tag4\"}],\"status\":\"pending\"},{\"id\":8739826599258045091,\"category\":{\"id\":2,\"name\":\"Cats\"},\"name\":\"Testing\",\"photoUrls\":[\"url1\",\"url2\"],\"tags\":[{\"id\":1,\"name\":\"tag2\"},{\"id\":2,\"name\":\"tag3\"}],\"status\":\"available\"},{\"id\":8739826599258045091,\"category\":{\"id\":2,\"name\":\"Cats\"},\"name\":\"Testing\",\"photoUrls\":[\"url1\",\"url2\"],\"tags\":[{\"id\":1,\"name\":\"tag2\"},{\"id\":2,\"name\":\"tag3\"}],\"status\":\"available\"}]"
+  }
+}
