@@ -1,0 +1,351 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "www.refugerestrooms.org",
+    "version": "0.0"
+  },
+  "host": "www.refugerestrooms.org",
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/v1/restrooms.json": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "ada",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "unisex",
+            "in": "query",
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "\u003cAdd response description\u003e",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Unkown"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/restrooms/search.json": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "ada",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "unisex",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "type": "array",
+            "collectionFormat": "multi",
+            "items": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "\u003cAdd response description\u003e",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Restrooms"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/restrooms/by_location.json": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "ada",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "unisex",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "lat",
+            "in": "query",
+            "type": "number"
+          },
+          {
+            "name": "lng",
+            "in": "query",
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "\u003cAdd response description\u003e",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Restrooms"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/restrooms/by_date.json": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "ada",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "unisex",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "updated",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "day",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "type": "array",
+            "collectionFormat": "multi",
+            "items": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "\u003cAdd response description\u003e",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Restrooms"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Unkown": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "accessible": {
+          "type": "string"
+        },
+        "unisex": {
+          "type": "string"
+        },
+        "directions": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "integer"
+        },
+        "longitude": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "downvote": {
+          "type": "integer"
+        },
+        "upvote": {
+          "type": "integer"
+        },
+        "country": {
+          "type": "string"
+        }
+      }
+    },
+    "Restrooms": {
+      "type": "object"
+    },
+    "Restroom": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "accessible": {
+          "type": "string"
+        },
+        "unisex": {
+          "type": "string"
+        },
+        "directions": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "integer"
+        },
+        "longitude": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "downvote": {
+          "type": "integer"
+        },
+        "upvote": {
+          "type": "integer"
+        },
+        "country": {
+          "type": "string"
+        },
+        "pg_search_rank": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

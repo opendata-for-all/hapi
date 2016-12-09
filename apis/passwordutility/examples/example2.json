@@ -1,0 +1,11 @@
+{
+  "request": {
+    "url": "http://passwordutility.net:80/api/password/generate?length\u003d10\u0026digits\u003dtrue\u0026specialCharacters\u003dtrue",
+    "method": "POST",
+    "body": ""
+  },
+  "response": {
+    "status": "200",
+    "body": "\"8g*59@xx%\u0027\""
+  }
+}

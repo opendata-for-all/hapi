@@ -1,0 +1,11 @@
+{
+  "request": {
+    "url": "http://passwordutility.net:80/api/password/validate?password\u003d8g*59%40xx%25\u0027",
+    "method": "POST",
+    "body": ""
+  },
+  "response": {
+    "status": "200",
+    "body": "56"
+  }
+}

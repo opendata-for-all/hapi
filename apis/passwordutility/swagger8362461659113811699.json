@@ -1,0 +1,76 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "passwordutility.net",
+    "version": "0.0"
+  },
+  "host": "passwordutility.net",
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/password/validate": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "password",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "\u003cAdd response description\u003e",
+            "schema": {
+              "$ref": "#/definitions/Validate"
+            }
+          }
+        }
+      }
+    },
+    "/password/generate": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "length",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "digits",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "specialCharacters",
+            "in": "query",
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "\u003cAdd response description\u003e",
+            "schema": {
+              "$ref": "#/definitions/Generate"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Validate": {
+      "type": "object"
+    },
+    "Generate": {
+      "type": "object"
+    }
+  }
+}
