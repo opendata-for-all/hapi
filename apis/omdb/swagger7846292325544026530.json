@@ -1,0 +1,115 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "www.omdbapi.com",
+    "version": "0.0"
+  },
+  "host": "www.omdbapi.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "t",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "i",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "s",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "y",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "plot",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "tomatoes",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
+            "name": "r",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "v",
+            "in": "query",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "\u003cAdd response description\u003e",
+            "schema": {
+              "$ref": "#/definitions/Unkown"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Unkown": {
+      "type": "object",
+      "properties": {
+        "totalResults": {
+          "type": "string"
+        },
+        "Response": {
+          "type": "string"
+        },
+        "Search": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Search"
+          }
+        }
+      }
+    },
+    "Search": {
+      "type": "object",
+      "properties": {
+        "Title": {
+          "type": "string"
+        },
+        "Year": {
+          "type": "string"
+        },
+        "imdbID": {
+          "type": "string"
+        },
+        "Type": {
+          "type": "string"
+        },
+        "Poster": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

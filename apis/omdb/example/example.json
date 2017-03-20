@@ -1,0 +1,11 @@
+{
+  "request": {
+    "url": "https://www.omdbapi.com/?t\u003dCasablanca\u0026i\u003dtt0034583\u0026s\u003dCasablanca\u0026y\u003d1942\u0026type\u003dmovie\u0026plot\u003dlong\u0026tomatoes\u003dfalse\u0026r\u003djson\u0026v\u003d1",
+    "method": "GET",
+    "body": ""
+  },
+  "response": {
+    "status": "200",
+    "body": "{\"Search\":[{\"Title\":\"Casablanca\",\"Year\":\"1942\",\"imdbID\":\"tt0034583\",\"Type\":\"movie\",\"Poster\":\"https://images-na.ssl-images-amazon.com/images/M/MV5BY2IzZGY2YmEtYzljNS00NTM5LTgwMzUtMzM1NjQ4NGI0OTk0XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_SX300.jpg\"}],\"totalResults\":\"1\",\"Response\":\"True\"}"
+  }
+}
