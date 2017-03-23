@@ -1,0 +1,454 @@
+{
+    "swagger": "2.0",
+    "x-otm-resource": {
+        "namespace": "http://opentravel.org/local/joao-pc/MASAI/BUS/v0",
+        "localName": "FeedMessageResource"
+    },
+    "info": {
+        "title": "MASAI BUS - Cityrama",
+        "version": "1.0.0",
+        "x-otm-library": {
+            "ResourceName": "FeedMessageResource",
+            "LibraryName": "MASAI_BUS",
+            "LibraryVersion": "0.0.0",
+            "LibraryStatus": "DRAFT",
+            "SourceFile": "/MASAI_BUS.otm",
+            "CompilerVersion": "4.0-SNAPSHOT",
+            "CompileDate": "2016-10-26T17:51:34.413+0100"
+        }
+    },
+    "host": "masai-bus-api.p.mashape.com",
+    "basePath": "/",
+    "schemes": [
+        "https"
+    ],
+    "security": [
+        {
+            "UserSecurity": []
+        },
+        {
+            "MashapeSecurity": []
+        }
+    ],
+    "paths": {
+        "/MASAI_info_BusRealTime": {
+            "post": {
+				"tags" : ["Bus"],
+                "summary": "Get list of available buses in real time",
+                "operationId": "MASAI_info_BusRealTime",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "routeId",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "This model contains the GTFS-RT specification in JSON",
+                        "schema": {
+                            "$ref": "#/definitions/FeedMessage"
+                        }
+                    }
+                },
+                "x-group-of-service": "info",
+                "x-group-of-module": [
+                    "bus"
+                ]
+            }
+        },
+        "/MASAI_info_BusStopRoutes": {
+            "post": {
+				"tags" : ["Bus"],
+                "summary": "Get list of stops and routes",
+                "operationId": "MASAI_info_BusStopRoutes",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "routeId",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Each 'GTFS_(name)' will contain the corresponding GTFS name specification. (E.g.: 'GTFS_agency' contains the GTFS agency.txt specification)",
+                        "schema": {
+                            "$ref": "#/definitions/BusStopRoutes"
+                        }
+                    }
+                },
+                "x-group-of-service": "info",
+                "x-group-of-module": [
+                    "bus"
+                ]
+            }
+        }
+    },
+    "definitions": {
+        "TripDescriptor": {
+            "x-otm-entity": {
+                "EntityType": "CoreObject",
+                "EntityName": "TripDescriptor"
+            },
+            "properties": {
+                "trip_id": {
+                    "description": "The trip_id from the GTFS feed that this selector refers to. For non frequency-based trips, this field is enough to uniquely identify the trip. For frequency-based trip, start_time and start_date might also be necessary.",
+                    "type": "string"
+                },
+                "route_id": {
+                    "description": "The route_id from the GTFS that this selector refers to.",
+                    "type": "string"
+                },
+                "direction_id": {
+                    "description": "The direction_id from the GTFS feed trips.txt file, indicating the direction of travel for trips this selector refers to.",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "start_time": {
+                    "description": "The initially scheduled start time of this trip instance. When the trip_id corresponds to a non-frequency-based trip, this field should either be omitted or be equal to the value in the GTFS feed. When the trip_id correponds to a frequency-based trip, the start_time must be specified for trip updates and vehicle positions. If the trip corresponds to exact_times=1 GTFS record, then start_time must be some multiple (including zero) of headway_secs later than frequencies.txt start_time for the corresponding time period. If the trip corresponds to exact_times=0, then its start_time may be arbitrary, and is initially expected to be the first departure of the trip. Once established, the start_time of this frequency-based trip should be considered immutable, even if the first departure time changes -- that time change may instead be reflected in a StopTimeUpdate. Format and semantics of the field is same as that of GTFS/frequencies.txt/start_time, e.g., 11:15:35 or 25:15:35.",
+                    "type": "string"
+                },
+                "start_date": {
+                    "description": "The scheduled start date of this trip instance. This field must be provided to disambiguate trips that are so late as to collide with a scheduled trip on a next day. For example, for a train that departs 8:00 and 20:00 every day, and is 12 hours late, there would be two distinct trips on the same time. This field can be provided but is not mandatory for schedules in which such collisions are impossible - for example, a service running on hourly schedule where a vehicle that is one hour late is not considered to be related to schedule anymore. In YYYYMMDD format.",
+                    "type": "string"
+                },
+                "ScheduleRelationship": {
+                    "$ref": "#/definitions/ScheduleRelationship"
+                }
+            }
+        },
+        "VehicleDescriptor": {
+            "x-otm-entity": {
+                "EntityType": "CoreObject",
+                "EntityName": "VehicleDescriptor"
+            },
+            "properties": {
+                "id": {
+                    "description": "Internal system identification of the vehicle. Should be unique per vehicle, and is used for tracking the vehicle as it proceeds through the system. This id should not be made visible to the end-user; for that purpose use the label field",
+                    "type": "string"
+                },
+                "label": {
+                    "description": "User visible label, i.e., something that must be shown to the passenger to help identify the correct vehicle.",
+                    "type": "string"
+                },
+                "license_plate": {
+                    "description": "The license plate of the vehicle.",
+                    "type": "string"
+                }
+            }
+        },
+        "VehicleStopStatus": {
+            "x-otm-entity": {
+                "EntityType": "EnumerationClosed",
+                "EntityName": "VehicleStopStatus"
+            },
+            "type": "string",
+            "enum": [
+                "INCOMING_AT",
+                "STOPPED_AT",
+                "IN_TRANSIT_TO"
+            ]
+        },
+        "CongestionLevel": {
+            "x-otm-entity": {
+                "EntityType": "EnumerationClosed",
+                "EntityName": "CongestionLevel"
+            },
+            "type": "string",
+            "enum": [
+                "UNKNOWN_CONGESTION_LEVEL",
+                "RUNNING_SMOOTHLY",
+                "STOP_AND_GO",
+                "CONGESTION",
+                "SEVERE_CONGESTION"
+            ]
+        },
+        "OccupancyStatus": {
+            "x-otm-entity": {
+                "EntityType": "EnumerationClosed",
+                "EntityName": "OccupancyStatus"
+            },
+            "type": "string",
+            "enum": [
+                "EMPTY",
+                "MANY_SEATS_AVAILABLE",
+                "FEW_SEATS_AVAILABLE",
+                "STANDING_ROOM_ONLY",
+                "CRUSHED_STAGING_ROOM_ONLY",
+                "FULL",
+                "NOT_ACCEPTING_PASSENGERS"
+            ]
+        },
+        "ScheduleRelationship": {
+            "x-otm-entity": {
+                "EntityType": "EnumerationClosed",
+                "EntityName": "ScheduleRelationship"
+            },
+            "type": "string",
+            "enum": [
+                "SCHEDULED",
+                "ADDED",
+                "UNSCHEDULED",
+                "CANCELED"
+            ]
+        },
+        "Position": {
+            "x-otm-entity": {
+                "EntityType": "CoreObject",
+                "EntityName": "Position"
+            },
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "latitude": {
+                    "description": "Degrees North, in the WGS-84 coordinate system.",
+                    "type": "number",
+                    "format": "float"
+                },
+                "longitude": {
+                    "description": "Degrees East, in the WGS-84 coordinate system.",
+                    "type": "number",
+                    "format": "float"
+                },
+                "bearing": {
+                    "description": "Bearing, in degrees, clockwise from True North, i.e., 0 is North and 90 is East. This can be the compass bearing, or the direction towards the next stop or intermediate location. This should not be deduced from the sequence of previous positions, which clients can compute from previous data.",
+                    "type": "number",
+                    "format": "float"
+                },
+                "odometer": {
+                    "description": "Odometer value, in meters.",
+                    "type": "number",
+                    "format": "double"
+                },
+                "speed": {
+                    "description": "Momentary speed measured by the vehicle, in meters per second.",
+                    "type": "number",
+                    "format": "float"
+                }
+            }
+        },
+        "VehiclePosition": {
+            "x-otm-entity": {
+                "EntityType": "CoreObject",
+                "EntityName": "VehiclePosition"
+            },
+            "properties": {
+                "current_stop_sequence": {
+                    "description": "The stop sequence index of the current stop. The meaning of current_stop_sequence (i.e., the stop that it refers to) is determined by current_status. If current_status is missing IN_TRANSIT_TO is assumed.",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "stop_id": {
+                    "description": "Identifies the current stop. The value must be the same as in stops.txt in the corresponding GTFS feed.",
+                    "type": "string"
+                },
+                "current_status": {
+                    "description": "The exact status of the vehicle with respect to the current stop. Ignored if current_stop_sequence is missing.",
+                    "$ref": "#/definitions/VehicleStopStatus"
+                },
+                "timestamp": {
+                    "description": "Moment at which the vehicle's position was measured. In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC).",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "congestion_level": {
+                    "$ref": "#/definitions/CongestionLevel"
+                },
+                "occupancy_status": {
+                    "description": "The degree of passenger occupancy of the vehicle. Caution: this field is still experimental, and subject to change. It may be formally adopted in the future.",
+                    "$ref": "#/definitions/OccupancyStatus"
+                },
+                "Position": {
+                    "description": "Current position of this vehicle.",
+                    "$ref": "#/definitions/Position"
+                },
+                "TripDescriptor": {
+                    "description": "The Trip that this vehicle is serving. Can be empty or partial if the vehicle can not be identified with a given trip instance.",
+                    "$ref": "#/definitions/TripDescriptor"
+                },
+                "VehicleDescriptor": {
+                    "description": "Additional information on the vehicle that is serving this trip. Each entry should have a unique vehicle id.",
+                    "$ref": "#/definitions/VehicleDescriptor"
+                }
+            }
+        },
+        "FeedHeader": {
+            "x-otm-entity": {
+                "EntityType": "CoreObject",
+                "EntityName": "FeedHeader"
+            },
+            "properties": {
+                "gtfs_realtime_version": {
+                    "description": "Version of the feed specification. The current version is 1.0.",
+                    "type": "string"
+                },
+                "timestamp": {
+                    "description": "This timestamp identifies the moment when the content of this feed has been created (in server time). In POSIX time (i.e., number of seconds since January 1st 1970 00:00:00 UTC). To avoid time skew between systems producing and consuming realtime information it is strongly advised to derive timestamp from a time server. It is completely acceptable to use Stratum 3 or even lower strata servers since time differences up to a couple of seconds are tolerable.",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Incrementality": {
+                    "$ref": "#/definitions/Incrementality"
+                }
+            }
+        },
+        "FeedEntity": {
+            "x-otm-entity": {
+                "EntityType": "CoreObject",
+                "EntityName": "FeedEntity"
+            },
+            "properties": {
+                "id": {
+                    "description": "Feed-unique identifier for this entity. The ids are used only to provide incrementality support. The actual entities referenced by the feed must be specified by explicit selectors (see EntitySelector below for more info).",
+                    "type": "string"
+                },
+                "VehiclePosition": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VehiclePosition"
+                    }
+                }
+            }
+        },
+        "Incrementality": {
+            "x-otm-entity": {
+                "EntityType": "EnumerationClosed",
+                "EntityName": "Incrementality"
+            },
+            "type": "string",
+            "enum": [
+                "FULL_DATASET",
+                "DIFFERENTIAL"
+            ]
+        },
+        "FeedMessage_ID": {
+            "x-otm-entity": {
+                "EntityType": "BusinessObject",
+                "EntityName": "FeedMessage"
+            },
+            "properties": {
+                "id": {
+                    "type": "string"
+                }
+            }
+        },
+        "FeedMessage": {
+            "x-otm-entity": {
+                "EntityType": "BusinessObject",
+                "EntityName": "FeedMessage"
+            },
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "FeedHeader": {
+                            "description": "Metadata about this feed and feed message.",
+                            "$ref": "#/definitions/FeedHeader"
+                        },
+                        "FeedEntity": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/FeedEntity"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "FeedMessage_Query_Availability": {
+            "x-otm-entity": {
+                "EntityType": "BusinessObject",
+                "EntityName": "FeedMessage"
+            },
+            "properties": {
+                "@type": {
+                    "type": "string"
+                },
+                "routeId": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            },
+            "required": [
+                "@type"
+            ],
+            "discriminator": "@type"
+        },
+        "BusStopRoutes_ID": {
+            "x-otm-entity": {
+                "EntityType": "BusinessObject",
+                "EntityName": "BusStopRoutes"
+            },
+            "properties": {
+                "id": {
+                    "type": "string"
+                }
+            }
+        },
+        "BusStopRoutes": {
+            "x-otm-entity": {
+                "EntityType": "BusinessObject",
+                "EntityName": "BusStopRoutes"
+            },
+            "allOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "GTFS_agency": {
+                            "description": "One or more transit agencies that provide the data in this feed.",
+                            "type": "string"
+                        },
+                        "GTFS_stops": {
+                            "description": "Individual locations where vehicles pick up or drop off passengers.",
+                            "type": "string"
+                        },
+                        "GTFS_routes": {
+                            "description": "Transit routes. A route is a group of trips that are displayed to riders as a single service.",
+                            "type": "string"
+                        },
+                        "GTFS_trips": {
+                            "description": "Trips for each route. A trip is a sequence of two or more stops that occurs at specific time.",
+                            "type": "string"
+                        },
+                        "GTFS_stop_times": {
+                            "description": "Times that a vehicle arrives at and departs from individual stops for each trip.",
+                            "type": "string"
+                        },
+                        "GTFS_calendar": {
+                            "description": "Dates for service IDs using a weekly schedule. Specify when service starts and ends, as well as days of the week where service is available.",
+                            "type": "string"
+                        }
+                    }
+                }
+            ]
+        },
+        "BusStopRoutes_Query_Availability": {
+            "x-otm-entity": {
+                "EntityType": "BusinessObject",
+                "EntityName": "BusStopRoutes"
+            },
+            "properties": {
+                "id": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "UserSecurity": {
+            "type": "basic"
+        },
+        "MashapeSecurity": {
+            "type": "apiKey",
+            "in": "header",
+            "name": "X-Mashape-Key"
+        }
+    }
+}
